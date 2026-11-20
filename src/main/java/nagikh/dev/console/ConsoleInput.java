@@ -1,7 +1,7 @@
-package sorokin.java.course.console;
+package nagikh.dev.console;
 
 import org.springframework.stereotype.Component;
-import sorokin.java.course.operations.ConsoleOperationType;
+import nagikh.dev.operations.ConsoleOperationType;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -46,7 +46,7 @@ public class ConsoleInput {
         }
     }
 
-    public int readPositiveInt(String prompt, String fieldName) {
+    public long readPositiveLong(String prompt, String fieldName) {
         while (true) {
             System.out.println(prompt);
             String value = readLine();

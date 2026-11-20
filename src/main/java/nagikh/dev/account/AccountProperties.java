@@ -1,4 +1,4 @@
-package sorokin.java.course.account;
+package nagikh.dev.account;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

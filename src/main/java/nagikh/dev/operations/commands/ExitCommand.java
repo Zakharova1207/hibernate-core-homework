@@ -1,8 +1,8 @@
-package sorokin.java.course.operations.commands;
+package nagikh.dev.operations.commands;
 
 import org.springframework.stereotype.Component;
-import sorokin.java.course.operations.ConsoleOperationType;
-import sorokin.java.course.operations.OperationCommand;
+import nagikh.dev.operations.ConsoleOperationType;
+import nagikh.dev.operations.OperationCommand;
 
 @Component
 public class ExitCommand implements OperationCommand {

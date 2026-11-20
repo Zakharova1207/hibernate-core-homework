@@ -1,10 +1,10 @@
-package sorokin.java.course.operations.commands;
+package nagikh.dev.operations.commands;
 
 import org.springframework.stereotype.Component;
-import sorokin.java.course.account.AccountService;
-import sorokin.java.course.console.ConsoleInput;
-import sorokin.java.course.operations.ConsoleOperationType;
-import sorokin.java.course.operations.OperationCommand;
+import nagikh.dev.account.AccountService;
+import nagikh.dev.console.ConsoleInput;
+import nagikh.dev.operations.ConsoleOperationType;
+import nagikh.dev.operations.OperationCommand;
 
 @Component
 public class AccountTransferCommand implements OperationCommand {
@@ -19,13 +19,13 @@ public class AccountTransferCommand implements OperationCommand {
 
     @Override
     public void execute() {
-        int fromAccountId = consoleInput.readPositiveInt("Enter source account id:", "source account id");
-        int toAccountId = consoleInput.readPositiveInt("Enter target account id:", "target account id");
+        var fromAccountId = consoleInput.readPositiveLong("Enter source account id:", "source account id");
+        var toAccountId = consoleInput.readPositiveLong("Enter target account id:", "target account id");
         if (fromAccountId == toAccountId) {
             throw new IllegalArgumentException("source and target account id must be different");
         }
-        int amount = consoleInput.readPositiveInt("Enter amount:", "amount");
-        accountService.transfer(fromAccountId, toAccountId, amount);
+        var amount = consoleInput.readPositiveLong("Enter amount:", "amount");
+        accountService.transfer(fromAccountId, toAccountId, (int) amount);
         System.out.println("Transfer completed from account " + fromAccountId + " to account " + toAccountId + ".");
     }
 

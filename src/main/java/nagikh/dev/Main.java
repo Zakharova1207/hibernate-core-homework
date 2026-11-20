@@ -1,11 +1,11 @@
-package sorokin.java.course;
+package nagikh.dev;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import sorokin.java.course.console.OperationsConsoleListener;
+import nagikh.dev.console.OperationsConsoleListener;
 
 public class Main {
     public static void main(String[] args) {
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("sorokin.java.course")) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("nagikh.dev")) {
             OperationsConsoleListener consoleListener = context.getBean(OperationsConsoleListener.class);
             consoleListener.runBank();
         }

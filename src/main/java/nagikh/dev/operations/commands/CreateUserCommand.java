@@ -1,10 +1,10 @@
-package sorokin.java.course.operations.commands;
+package nagikh.dev.operations.commands;
 
 import org.springframework.stereotype.Component;
-import sorokin.java.course.console.ConsoleInput;
-import sorokin.java.course.operations.ConsoleOperationType;
-import sorokin.java.course.operations.OperationCommand;
-import sorokin.java.course.user.UserService;
+import nagikh.dev.console.ConsoleInput;
+import nagikh.dev.operations.ConsoleOperationType;
+import nagikh.dev.operations.OperationCommand;
+import nagikh.dev.user.UserService;
 
 @Component
 public class CreateUserCommand implements OperationCommand {
