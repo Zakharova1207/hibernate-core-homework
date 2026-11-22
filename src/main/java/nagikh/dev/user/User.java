@@ -10,7 +10,7 @@ import nagikh.dev.account.Account;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @Column(name = "login")
     private String login;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
@@ -28,7 +28,7 @@ public class User {
     public User() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 

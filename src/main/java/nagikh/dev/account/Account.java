@@ -8,8 +8,8 @@ import nagikh.dev.user.User;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToOne(fetch = FetchType.EAGER)
+    private int id;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @Column(name = "money_amount")
@@ -23,7 +23,7 @@ public class Account {
     public Account() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 

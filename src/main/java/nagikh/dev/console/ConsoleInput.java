@@ -46,7 +46,7 @@ public class ConsoleInput {
         }
     }
 
-    public long readPositiveLong(String prompt, String fieldName) {
+    public Integer readPositiveInt(String prompt, String fieldName) {
         while (true) {
             System.out.println(prompt);
             String value = readLine();

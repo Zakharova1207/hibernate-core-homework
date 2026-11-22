@@ -38,7 +38,7 @@ public class UserService {
         });
     }
 
-    public User findUserById(Long id) {
+    public User findUserById(int id) {
         return transactionHelper.executeInTransactionOrJoin(() -> {
             Session session = sessionFactory.getCurrentSession();
             User user = session.find(User.class, id);

@@ -21,7 +21,7 @@ public class AccountService {
         this.transactionHelper = transactionHelper;
     }
 
-    public Account createAccount(Long userId) {
+    public Account createAccount(int userId) {
         return transactionHelper.executeInTransactionOrJoin(() -> {
             Session session = sessionFactory.getCurrentSession();
             User user = session.find(User.class, userId);
@@ -35,7 +35,7 @@ public class AccountService {
         });
     }
 
-    public Optional<Account> findAccountById(Long id) {
+    public Optional<Account> findAccountById(int id) {
         return transactionHelper.executeInTransactionOrJoin(() -> {
             Session session = sessionFactory.getCurrentSession();
             validatePositiveId(id, "account id");
@@ -43,7 +43,7 @@ public class AccountService {
         });
     }
 
-    public List<Account> getUserAccounts(Long userId) {
+    public List<Account> getUserAccounts(int userId) {
         return transactionHelper.executeInTransactionOrJoin(() -> {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("""
@@ -56,7 +56,7 @@ public class AccountService {
         });
     }
 
-    public void withdraw(Long fromAccountId, Integer amount) {
+    public void withdraw(int fromAccountId, Integer amount) {
         validatePositiveId(fromAccountId, "account id");
         validatePositiveAmount(amount);
         transactionHelper.executeInTransactionOrJoin(() -> {
@@ -75,7 +75,7 @@ public class AccountService {
         });
     }
 
-    public void deposit(Long toAccountId, Integer amount) {
+    public void deposit(int toAccountId, Integer amount) {
         validatePositiveId(toAccountId, "account id");
         validatePositiveAmount(amount);
         transactionHelper.executeInTransactionOrJoin(() -> {
@@ -88,7 +88,7 @@ public class AccountService {
         });
     }
 
-    public Account closeAccount(Long accountId) {
+    public Account closeAccount(int accountId) {
         return transactionHelper.executeInTransactionOrJoin(() -> {
             Session session = sessionFactory.getCurrentSession();
             validatePositiveId(accountId, "account id");
@@ -101,7 +101,7 @@ public class AccountService {
             }
             var accountToTransferMoney = userAccounts.stream()
                     .filter(it -> !Objects.equals(it.getId(), accountId))
-                    .min(Comparator.comparingLong(Account::getId))
+                    .min(Comparator.comparingInt(Account::getId))
                     .orElseThrow();
 
             var newAmount = Math.addExact(accountToTransferMoney.getMoneyAmount(), accountToClose.getMoneyAmount());
@@ -111,13 +111,13 @@ public class AccountService {
         });
     }
 
-    public void transfer(Long fromAccountId, Long toAccountId, int amount) {
+    public void transfer(int fromAccountId, int toAccountId, int amount) {
         validatePositiveId(fromAccountId, "source account id");
         validatePositiveId(toAccountId, "target account id");
         validatePositiveAmount(amount);
         transactionHelper.executeInTransactionOrJoin(() -> {
 
-            if (fromAccountId.equals(toAccountId)) {
+            if (fromAccountId == toAccountId) {
                 throw new IllegalArgumentException("source and target account id must be different");
             }
             Account accountFrom = findAccountById(fromAccountId)
@@ -142,8 +142,8 @@ public class AccountService {
         });
     }
 
-    private void validatePositiveId(Long id, String fieldName) {
-        if (id == null || id <= 0) {
+    private void validatePositiveId(int id, String fieldName) {
+        if (id <= 0) {
             throw new IllegalArgumentException(fieldName + " must be > 0");
         }
     }
