@@ -1,4 +1,4 @@
-package sorokin.java.course.operations;
+package nagikh.dev.operations;
 
 public interface OperationCommand {
     void execute();

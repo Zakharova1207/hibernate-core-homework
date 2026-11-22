@@ -1,4 +1,4 @@
-package sorokin.java.course.config;
+package nagikh.dev.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

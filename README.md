@@ -49,7 +49,7 @@ mvn clean package
 ```
 2. Запустить:
 ```bash
-mvn exec:java -Dexec.mainClass="sorokin.java.course.Main"
+mvn exec:java -Dexec.mainClass="nagikh.dev.Main"
 ```
 
 Если `exec-maven-plugin` не настроен, можно запускать из IDE через класс `Main`.

@@ -1,10 +1,10 @@
-package sorokin.java.course.operations.commands;
+package nagikh.dev.operations.commands;
 
 import org.springframework.stereotype.Component;
-import sorokin.java.course.account.AccountService;
-import sorokin.java.course.console.ConsoleInput;
-import sorokin.java.course.operations.ConsoleOperationType;
-import sorokin.java.course.operations.OperationCommand;
+import nagikh.dev.account.AccountService;
+import nagikh.dev.console.ConsoleInput;
+import nagikh.dev.operations.ConsoleOperationType;
+import nagikh.dev.operations.OperationCommand;
 
 @Component
 public class AccountWithdrawCommand implements OperationCommand {
@@ -19,9 +19,9 @@ public class AccountWithdrawCommand implements OperationCommand {
 
     @Override
     public void execute() {
-        int accountId = consoleInput.readPositiveInt("Enter account id:", "account id");
-        int amount = consoleInput.readPositiveInt("Enter amount:", "amount");
-        accountService.withdraw(accountId, amount);
+        var accountId = consoleInput.readPositiveInt("Enter account id:", "account id");
+        var amount = consoleInput.readPositiveInt("Enter amount:", "amount");
+        accountService.withdraw(accountId, (int) amount);
         System.out.println("Withdrawn " + amount + " from account " + accountId + ".");
     }
 
